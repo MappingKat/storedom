@@ -1,5 +1,6 @@
 Storedom::Application.routes.draw do
-  root 'items#index'
+  devise_for :users
+  root :to => 'items#index'
 
   resources :items,  only: [:index]
   resources :orders, only: [:index, :show]
