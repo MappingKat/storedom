@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+  
+
   def index
-    @users = User.all
+    if current_user && current_user.admin?
+      @users = User.all
+    else
+      render :status => 403, :text => "Forbodden!"
+    end
   end
 
   def show
